@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elena Voss — Photography</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green: #7ebc54;
+    --green-dark: #5c9437;
+    --green-light: #a8d47e;
+    --green-pale: #eef7e6;
+    --cream: #faf8f4;
+    --dark: #1a1a18;
+    --mid: #3d3d38;
+    --muted: #8a8a7e;
+    --border: rgba(126,188,84,0.18);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 5vw;
+    background: rgba(250,248,244,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--dark);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--green); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  nav ul a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    position: relative;
+    transition: color 0.3s;
+  }
+
+  nav ul a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0; right: 100%;
+    height: 1px;
+    background: var(--green);
+    transition: right 0.3s ease;
+  }
+
+  nav ul a:hover { color: var(--green-dark); }
+  nav ul a:hover::after { right: 0; }
+
+  .nav-cta {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--green);
+    border: none;
+    padding: 0.6rem 1.4rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+  /* ── BANNER ── */
+  .banner {
+    height: 100vh;
+    min-height: 620px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .banner-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    animation: zoomIn 10s ease forwards;
+  }
+
+  @keyframes zoomIn {
+    from { transform: scale(1.06); }
+    to   { transform: scale(1.0); }
+  }
+
+  .banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(26,26,24,0.72) 0%, rgba(26,26,24,0.28) 60%, transparent 100%);
+  }
+
+  .banner-content {
+    position: relative;
+    padding: 0 5vw;
+    max-width: 680px;
+    animation: fadeUp 1.2s 0.3s both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .banner-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .banner-eyebrow::before {
+    content: '';
+    width: 36px; height: 1px;
+    background: var(--green-light);
+  }
+
+  .banner-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 1.4rem;
+    letter-spacing: -0.01em;
+  }
+
+  .banner-title em {
+    font-style: italic;
+    color: var(--green-light);
+  }
+
+  .banner-subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 2.2rem;
+    max-width: 440px;
+  }
+
+  .banner-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--green);
+    color: #fff;
+    padding: 0.85rem 2rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.45);
+    color: #fff;
+    padding: 0.85rem 2rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.3s, background 0.3s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: var(--green-light); background: rgba(126,188,84,0.15); }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.55;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+  }
+
+  .scroll-indicator span {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .scroll-indicator::after {
+    content: '';
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, #fff, transparent);
+  }
+
+  /* ── SECTION SHELL ── */
+  .section { padding: 6rem 5vw; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 28px; height: 1px;
+    background: var(--green);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 1rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--green-dark); }
+
+  /* ── MOSAIC ── */
+  #portfolio { background: #f2f0eb; }
+
+  .portfolio-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .filter-tabs {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-tab {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .filter-tab.active,
+  .filter-tab:hover {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+  }
+
+  .mosaic {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+  }
+
+  .mosaic-item {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition:
+      opacity 0.42s cubic-bezier(0.4,0,0.2,1),
+      transform 0.42s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .mosaic-item.is-hiding {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+    pointer-events: none;
+  }
+
+  .mosaic-item.is-hidden {
+    display: none;
+  }
+
+  .mosaic-item.is-entering {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+
+  .mosaic-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+
+  .mosaic-item:hover img { transform: scale(1.06); }
+
+  .mosaic-item .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,26,24,0.75) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.2rem;
+  }
+
+  .mosaic-item:hover .overlay { opacity: 1; }
+
+  .overlay-text {
+    color: #fff;
+  }
+
+  .overlay-text h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+  }
+
+  .overlay-text p {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green-light);
+  }
+
+  /* Mosaic layout */
+  .m1 { grid-column: span 5; height: 360px; }
+  .m2 { grid-column: span 4; height: 360px; }
+  .m3 { grid-column: span 3; height: 360px; }
+  .m4 { grid-column: span 3; height: 260px; }
+  .m5 { grid-column: span 5; height: 260px; }
+  .m6 { grid-column: span 4; height: 260px; }
+  .m7 { grid-column: span 4; height: 320px; }
+  .m8 { grid-column: span 5; height: 320px; }
+  .m9 { grid-column: span 3; height: 320px; }
+
+  /* ── ABOUT ── */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5vw;
+    align-items: center;
+  }
+
+  .about-img-wrap {
+    position: relative;
+  }
+
+  .about-img-wrap img {
+    width: 100%;
+    height: 540px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-img-accent {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 120px;
+    height: 120px;
+    background: var(--green);
+    z-index: -1;
+  }
+
+  .about-stat-row {
+    display: flex;
+    gap: 2.5rem;
+    margin: 2.5rem 0;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about-stat strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    line-height: 1;
+  }
+
+  .about-stat span {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  .about-body {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--mid);
+  }
+
+  /* ── REVIEWS ── */
+  #reviews { background: var(--dark); }
+  #reviews .section-label { color: var(--green-light); }
+  #reviews .section-label::before { background: var(--green-light); }
+  #reviews .section-title { color: #fff; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .review-card {
+    border: 1px solid rgba(126,188,84,0.2);
+    padding: 2rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .review-card:hover {
+    border-color: rgba(126,188,84,0.55);
+    transform: translateY(-4px);
+  }
+
+  .review-card::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--green);
+    opacity: 0.35;
+    position: absolute;
+    top: 0.5rem;
+    left: 1.5rem;
+  }
+
+  .review-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 1.2rem;
+  }
+
+  .star {
+    width: 12px; height: 12px;
+    background: var(--green);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 1.5rem;
+  }
+
+  .reviewer {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .reviewer-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(126,188,84,0.4);
+  }
+
+  .reviewer-info strong {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .reviewer-info span {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111110;
+    color: rgba(255,255,255,0.6);
+    padding: 4rem 5vw 2rem;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 2rem;
+  }
+
+  .footer-brand .nav-logo {
+    font-size: 1.5rem;
+    color: #fff;
+    display: block;
+    margin-bottom: 1rem;
+    text-decoration: none;
+  }
+
+  .footer-tagline {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.45);
+    max-width: 240px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .social-btn {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(126,188,84,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green-light);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .social-btn:hover {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+  }
+
+  .footer-col h5 {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col ul li {
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-col ul a {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+
+  .footer-col ul a:hover { color: var(--green-light); }
+
+  .contact-item {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.85rem;
+    align-items: flex-start;
+  }
+
+  .contact-item .icon {
+    width: 18px; height: 18px;
+    border: 1px solid rgba(126,188,84,0.35);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    color: var(--green-light);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.28);
+  }
+
+  .footer-bottom a {
+    color: rgba(255,255,255,0.28);
+    text-decoration: none;
+  }
+
+  .footer-bottom a:hover { color: var(--green-light); }
+
+  /* ── DOWNLOADS ── */
+  #downloads { background: var(--cream); }
+
+  .downloads-intro {
+    max-width: 560px;
+    margin-bottom: 3.5rem;
+  }
+
+  .downloads-intro p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--mid);
+    margin-top: 0.8rem;
+  }
+
+  .downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .dl-card {
+    background: #fff;
+    border: 1px solid rgba(126,188,84,0.18);
+    padding: 2rem 1.8rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+  }
+
+  .dl-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--green);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .dl-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(126,188,84,0.12);
+    border-color: rgba(126,188,84,0.4);
+  }
+
+  .dl-card:hover::before { transform: scaleX(1); }
+
+  .dl-icon {
+    width: 48px; height: 48px;
+    background: var(--green-pale);
+    border: 1px solid rgba(126,188,84,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .dl-icon svg {
+    width: 22px; height: 22px;
+    stroke: var(--green-dark);
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .dl-tag {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--green-dark);
+    background: var(--green-pale);
+    padding: 0.25rem 0.6rem;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    align-self: flex-start;
+  }
+
+  .dl-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .dl-desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--muted);
+    flex: 1;
+    margin-bottom: 1.6rem;
+  }
+
+  .dl-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(126,188,84,0.15);
+  }
+
+  .dl-size {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .dl-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green-dark);
+    text-decoration: none;
+    border: 1px solid var(--green);
+    padding: 0.45rem 1rem;
+    transition: background 0.25s, color 0.25s;
+    cursor: pointer;
+    background: transparent;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .dl-btn svg {
+    width: 13px; height: 13px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
+  .dl-btn:hover {
+    background: var(--green);
+    color: #fff;
+  }
+
+  @media (max-width: 900px) {
+    .downloads-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 580px) {
+    .downloads-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── PARALLAX CANVAS ── */
+  #px-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .px-layer {
+    position: absolute;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  .px-ring {
+    border-radius: 50%;
+    border: 1px solid rgba(126,188,84,0.2);
+    background: transparent;
+  }
+
+  .px-dots {
+    background-image: radial-gradient(circle, rgba(126,188,84,0.3) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+  }
+
+  .px-lines {
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent, transparent 7px,
+      rgba(126,188,84,0.13) 7px, rgba(126,188,84,0.13) 8px
+    );
+  }
+
+  .px-blob {
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, rgba(126,188,84,0.11), transparent 68%);
+  }
+
+  .px-cross::before,
+  .px-cross::after {
+    content: '';
+    position: absolute;
+    background: rgba(126,188,84,0.3);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .px-cross::before { width: 1px; height: 100%; }
+  .px-cross::after  { width: 100%; height: 1px; }
+
+  /* Nav and content sit above parallax canvas */
+  nav    { z-index: 100; }
+  .banner { z-index: 2; }
+  section, footer { position: relative; z-index: 2; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav ul { display: none; }
+    .mosaic { grid-template-columns: repeat(6, 1fr); }
+    .m1 { grid-column: span 6; height: 280px; }
+    .m2 { grid-column: span 6; height: 240px; }
+    .m3 { grid-column: span 6; height: 220px; }
+    .m4,.m5,.m6,.m7,.m8,.m9 { grid-column: span 3; height: 200px; }
+    #about { grid-template-columns: 1fr; }
+    .about-img-wrap img { height: 320px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+
+  @media (max-width: 580px) {
+    .banner-actions { flex-direction: column; align-items: flex-start; }
+    .footer-top { grid-template-columns: 1fr; }
+    .about-stat-row { flex-wrap: wrap; gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── PARALLAX CANVAS (fixed, always visible, never clipped) ── -->
+<div id="px-canvas" aria-hidden="true">
+  <!-- Large slow blob — top right -->
+  <div class="px-layer px-blob"  data-speed="0.06" style="width:600px;height:600px;top:5vh;right:-8vw;"></div>
+  <!-- Medium ring — upper left -->
+  <div class="px-layer px-ring"  data-speed="0.11" style="width:380px;height:380px;top:12vh;left:-6vw;"></div>
+  <!-- Dot grid — mid left -->
+  <div class="px-layer px-dots"  data-speed="0.08" style="width:220px;height:220px;top:38vh;left:3vw;opacity:0.75;"></div>
+  <!-- Small fast ring — mid right -->
+  <div class="px-layer px-ring"  data-speed="0.19" style="width:130px;height:130px;top:45vh;right:7vw;"></div>
+  <!-- Cross accent — centre -->
+  <div class="px-layer px-cross" data-speed="0.14" style="width:40px;height:40px;top:55vh;left:48vw;opacity:0.5;"></div>
+  <!-- Lines block — lower left -->
+  <div class="px-layer px-lines" data-speed="0.09" style="width:180px;height:280px;top:62vh;left:-1vw;opacity:0.55;"></div>
+  <!-- Large blob — lower right -->
+  <div class="px-layer px-blob"  data-speed="0.07" style="width:500px;height:500px;top:70vh;right:-5vw;"></div>
+  <!-- Small ring — lower left corner -->
+  <div class="px-layer px-ring"  data-speed="0.22" style="width:90px;height:90px;top:80vh;left:12vw;"></div>
+  <!-- Dot patch — upper right -->
+  <div class="px-layer px-dots"  data-speed="0.13" style="width:160px;height:160px;top:20vh;right:18vw;opacity:0.6;"></div>
+  <!-- Cross — right mid-low -->
+  <div class="px-layer px-cross" data-speed="0.17" style="width:30px;height:30px;top:72vh;right:22vw;opacity:0.45;"></div>
+</div>
+
+<!-- ── NAVIGATION ── -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">Elena<span>.</span>Voss</a>
+  <ul>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#downloads">Downloads</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Book a Session</a>
+</nav>
+
+<!-- ── BANNER ── -->
+<section class="banner">
+  <video class="banner-video" autoplay muted loop playsinline
+    poster="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80">
+    <source src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4" type="video/mp4">
+    <source src="https://videos.pexels.com/video-files/856136/856136-hd_1920_1080_25fps.mp4" type="video/mp4">
+  </video>
+  <div class="banner-overlay"></div>
+  <div class="banner-content">
+    <p class="banner-eyebrow">Fine Art Photography</p>
+    <h1 class="banner-title">
+      Light tells<br><em>every story</em><br>worth telling.
+    </h1>
+    <p class="banner-subtitle">
+      Award-winning photographer specialising in landscape, portrait, and editorial work. Based in São Paulo, available worldwide.
+    </p>
+    <div class="banner-actions">
+      <a class="btn-primary" href="#portfolio">View Portfolio</a>
+      <a class="btn-outline" href="#about">My Story</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO MOSAIC ── -->
+<section class="section" id="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <p class="section-label">Selected Works</p>
+      <h2 class="section-title">A curated <em>collection</em></h2>
+    </div>
+    <div class="filter-tabs">
+      <button class="filter-tab active">All</button>
+      <button class="filter-tab">Landscape</button>
+      <button class="filter-tab">Portrait</button>
+      <button class="filter-tab">Editorial</button>
+      <button class="filter-tab">Architecture</button>
+    </div>
+  </div>
+
+  <div class="mosaic">
+    <div class="mosaic-item m1" data-category="landscape">
+      <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80" alt="Mountain Mist">
+      <div class="overlay"><div class="overlay-text"><h4>Mountain Mist</h4><p>Landscape</p></div></div>
+    </div>
+    <div class="mosaic-item m2" data-category="portrait">
+      <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=700&q=80" alt="Golden Hour Portrait">
+      <div class="overlay"><div class="overlay-text"><h4>Golden Hour</h4><p>Portrait</p></div></div>
+    </div>
+    <div class="mosaic-item m3" data-category="editorial">
+      <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80" alt="Wanderlust">
+      <div class="overlay"><div class="overlay-text"><h4>Wanderlust</h4><p>Editorial</p></div></div>
+    </div>
+    <div class="mosaic-item m4" data-category="architecture">
+      <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=500&q=80" alt="Urban Lines">
+      <div class="overlay"><div class="overlay-text"><h4>Urban Lines</h4><p>Architecture</p></div></div>
+    </div>
+    <div class="mosaic-item m5" data-category="landscape">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Peaks & Valleys">
+      <div class="overlay"><div class="overlay-text"><h4>Peaks & Valleys</h4><p>Landscape</p></div></div>
+    </div>
+    <div class="mosaic-item m6" data-category="portrait">
+      <img src="https://images.unsplash.com/photo-1504703395950-b89145a5425b?w=700&q=80" alt="Through the Lens">
+      <div class="overlay"><div class="overlay-text"><h4>Through the Lens</h4><p>Portrait</p></div></div>
+    </div>
+    <div class="mosaic-item m7" data-category="landscape">
+      <img src="https://images.unsplash.com/photo-1468476396571-4d6f2a427ee7?w=700&q=80" alt="Still Waters">
+      <div class="overlay"><div class="overlay-text"><h4>Still Waters</h4><p>Landscape</p></div></div>
+    </div>
+    <div class="mosaic-item m8" data-category="editorial">
+      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80" alt="The Runway">
+      <div class="overlay"><div class="overlay-text"><h4>The Runway</h4><p>Editorial</p></div></div>
+    </div>
+    <div class="mosaic-item m9" data-category="architecture">
+      <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" alt="Concrete Dreams">
+      <div class="overlay"><div class="overlay-text"><h4>Concrete Dreams</h4><p>Architecture</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="section" id="about" style="background:var(--cream);">
+  <div class="about-img-wrap">
+    <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=800&q=80" alt="Elena Voss">
+    <div class="about-img-accent"></div>
+  </div>
+  <div>
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">Chasing <em>light</em>,<br>collecting moments.</h2>
+    <p class="about-body">
+      I'm Elena Voss — a fine-art and commercial photographer with over a decade behind the lens. 
+      My work explores the quiet tension between nature and humanity, intimacy and scale. 
+      I believe every frame is a decision, and every decision tells the world something real about who we are.
+    </p>
+    <div class="about-stat-row">
+      <div class="about-stat">
+        <strong>12+</strong>
+        <span>Years Experience</span>
+      </div>
+      <div class="about-stat">
+        <strong>840</strong>
+        <span>Projects Delivered</span>
+      </div>
+      <div class="about-stat">
+        <strong>38</strong>
+        <span>Countries Visited</span>
+      </div>
+    </div>
+    <p class="about-body" style="margin-bottom:2rem;">
+      From editorial campaigns for international magazines to intimate wedding stories and sweeping landscape series, 
+      my approach is always the same: patience, presence, and an obsession with the decisive moment.
+    </p>
+    <a class="btn-primary" href="#contact" style="display:inline-block;">Work With Me</a>
+  </div>
+</section>
+
+<!-- ── DOWNLOADS ── -->
+<section class="section" id="downloads">
+  <div class="downloads-intro">
+    <p class="section-label">Press & Resources</p>
+    <h2 class="section-title">Download <em>materials</em></h2>
+    <p>Everything you need — press kits, print catalogues, and rate cards — available for immediate download.</p>
+  </div>
+
+  <div class="downloads-grid">
+
+    <div class="dl-card">
+      <div class="dl-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+      </div>
+      <span class="dl-tag">PDF · Press Kit</span>
+      <h3 class="dl-title">Media Press Kit 2025</h3>
+      <p class="dl-desc">Official press kit with biography, high-resolution portrait, editorial guidelines, and approved quotes for publication.</p>
+      <div class="dl-meta">
+        <span class="dl-size">PDF · 4.2 MB</span>
+        <a class="dl-btn" href="#" download>
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          Download
+        </a>
+      </div>
+    </div>
+
+    <div class="dl-card">
+      <div class="dl-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <span class="dl-tag">PDF · Catalogue</span>
+      <h3 class="dl-title">Print Catalogue 2025</h3>
+      <p class="dl-desc">Full portfolio catalogue featuring 60+ selected works across landscape, portrait, editorial, and architecture series.</p>
+      <div class="dl-meta">
+        <span class="dl-size">PDF · 18.7 MB</span>
+        <a class="dl-btn" href="#" download>
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          Download
+        </a>
+      </div>
+    </div>
+
+    <div class="dl-card">
+      <div class="dl-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <span class="dl-tag">PDF · Pricing</span>
+      <h3 class="dl-title">Services & Rate Card</h3>
+      <p class="dl-desc">Transparent pricing guide for all session types — weddings, commercial campaigns, editorial, and fine-art prints.</p>
+      <div class="dl-meta">
+        <span class="dl-size">PDF · 1.1 MB</span>
+        <a class="dl-btn" href="#" download>
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          Download
+        </a>
+      </div>
+    </div>
+
+    <div class="dl-card">
+      <div class="dl-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <span class="dl-tag">PDF · Bio</span>
+      <h3 class="dl-title">Artist Statement</h3>
+      <p class="dl-desc">Comprehensive artist statement and biography for gallery submissions, grant applications, and curatorial references.</p>
+      <div class="dl-meta">
+        <span class="dl-size">PDF · 0.8 MB</span>
+        <a class="dl-btn" href="#" download>
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          Download
+        </a>
+      </div>
+    </div>
+
+    <div class="dl-card">
+      <div class="dl-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <span class="dl-tag">PDF · Licensing</span>
+      <h3 class="dl-title">Licensing Guide</h3>
+      <p class="dl-desc">Complete guide to image licensing terms, usage rights, and commercial reproduction permissions for agencies and publishers.</p>
+      <div class="dl-meta">
+        <span class="dl-size">PDF · 2.3 MB</span>
+        <a class="dl-btn" href="#" download>
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          Download
+        </a>
+      </div>
+    </div>
+
+    <div class="dl-card">
+      <div class="dl-icon">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <span class="dl-tag">ZIP · Hi-Res</span>
+      <h3 class="dl-title">Press Photo Pack</h3>
+      <p class="dl-desc">High-resolution approved press photographs and headshots for editorial, speaking events, and media publication use.</p>
+      <div class="dl-meta">
+        <span class="dl-size">ZIP · 94 MB</span>
+        <a class="dl-btn" href="#" download>
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          Download
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── REVIEWS ── -->
+<section class="section" id="reviews">
+  <div style="max-width:520px;">
+    <p class="section-label">Client Voices</p>
+    <h2 class="section-title">Stories <em>they</em> share</h2>
+  </div>
+  <div class="reviews-grid">
+
+    <div class="review-card">
+      <div class="review-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+      </div>
+      <p class="review-text">"Elena has an extraordinary ability to find beauty where no one else is even looking. Our wedding photos are genuinely works of art — we've had them printed and framed throughout our home."</p>
+      <div class="reviewer">
+        <img class="reviewer-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80" alt="Sofia M.">
+        <div class="reviewer-info">
+          <strong>Sofia & Marco Ferreira</strong>
+          <span>Wedding — Algarve, Portugal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+      </div>
+      <p class="review-text">"We hired Elena for our product campaign and the results surpassed every expectation. Her editorial eye, her professionalism, and her calm on set are simply unmatched in the industry."</p>
+      <div class="reviewer">
+        <img class="reviewer-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80" alt="James Archer">
+        <div class="reviewer-info">
+          <strong>James Archer</strong>
+          <span>Creative Director — Vela Studio</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+      </div>
+      <p class="review-text">"Three landscape commissions in three years and I keep coming back. Elena understands light the way musicians understand silence — it's what she does with the space between that astonishes you."</p>
+      <div class="reviewer">
+        <img class="reviewer-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80" alt="Camille B.">
+        <div class="reviewer-info">
+          <strong>Camille Bernard</strong>
+          <span>Art Collector — Paris</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer id="contact">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#">Elena<span style="color:var(--green)">.</span>Voss</a>
+      <p class="footer-tagline">Fine-art & commercial photography. Available for projects worldwide. Let's make something unforgettable.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#" title="Instagram">Ig</a>
+        <a class="social-btn" href="#" title="LinkedIn">Li</a>
+        <a class="social-btn" href="#" title="Behance">Be</a>
+        <a class="social-btn" href="#" title="Pinterest">Pt</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <ul>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#">Wedding Photography</a></li>
+        <li><a href="#">Commercial Campaigns</a></li>
+        <li><a href="#">Portrait Sessions</a></li>
+        <li><a href="#">Landscape Prints</a></li>
+        <li><a href="#">Editorial Work</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <div class="contact-item">
+        <div class="icon">@</div>
+        <span>hello@elenavoss.com</span>
+      </div>
+      <div class="contact-item">
+        <div class="icon">☏</div>
+        <span>+55 (11) 9 8765-4321</span>
+      </div>
+      <div class="contact-item">
+        <div class="icon">◎</div>
+        <span>São Paulo, Brazil<br>Available worldwide</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Elena Voss Photography. All rights reserved.</span>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const FADE_MS = 400;
+  let pending = null;
+
+  function applyFilter(selected) {
+    if (pending) { clearTimeout(pending); pending = null; }
+
+    const items = [...document.querySelectorAll('.mosaic-item')];
+    const shouldShow = el => selected === 'all' || el.dataset.category === selected;
+
+    const toHide = items.filter(el => !shouldShow(el) && !el.classList.contains('is-hidden'));
+    const toShow = items.filter(el =>  shouldShow(el));
+
+    // ── Phase 1: fade + slide OUT the leavers ──
+    toHide.forEach(el => {
+      el.style.transitionDelay = '';
+      el.classList.remove('is-entering');
+      el.classList.add('is-hiding');
+    });
+
+    // ── Phase 2: after leavers finish, collapse them then bring in newcomers ──
+    pending = setTimeout(() => {
+      toHide.forEach(el => {
+        el.classList.remove('is-hiding');
+        el.classList.add('is-hidden');
+      });
+
+      // Items already visible and staying need no treatment
+      const entering = toShow.filter(el => el.classList.contains('is-hidden'));
+
+      entering.forEach(el => {
+        el.style.transitionDelay = '';
+        el.classList.remove('is-hidden');
+        el.classList.add('is-entering');
+      });
+
+      // Double rAF so browser has painted the element in its start position
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        entering.forEach((el, i) => {
+          el.style.transitionDelay = `${i * 60}ms`;
+          el.classList.remove('is-entering');
+        });
+
+        pending = setTimeout(() => {
+          entering.forEach(el => { el.style.transitionDelay = ''; });
+          pending = null;
+        }, FADE_MS + entering.length * 60 + 20);
+      }));
+
+    }, toHide.length ? FADE_MS : 0);
+  }
+
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      applyFilter(tab.textContent.trim().toLowerCase());
+    });
+  });
+
+  // ── PARALLAX ──
+  const pxLayers = [...document.querySelectorAll('#px-canvas .px-layer[data-speed]')];
+
+  function driveParallax() {
+    const sy = window.scrollY;
+    pxLayers.forEach(el => {
+      const speed  = parseFloat(el.dataset.speed);
+      const offset = -(sy * speed);
+      el.style.transform = `translateY(${offset.toFixed(2)}px)`;
+    });
+  }
+
+  window.addEventListener('scroll', driveParallax, { passive: true });
+  driveParallax();
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(250,248,244,0.97)'
+      : 'rgba(250,248,244,0.85)';
+  });
+</script>
+</body>
+</html>
